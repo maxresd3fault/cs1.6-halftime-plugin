@@ -5,7 +5,7 @@
 #include <orpheu_memory>
 
 #define PLUGIN "Halftime"
-#define VERSION "1.0"
+#define VERSION "v1.0"
 #define AUTHOR "maxresdefault"
 
 #define SCORE_T 0
