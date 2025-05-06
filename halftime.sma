@@ -24,9 +24,9 @@ public plugin_init()
 {
 	register_plugin(PLUGIN, VERSION, AUTHOR);
 	register_logevent( "roundEnd", 2, "1=Round_End" );
-	register_event("TeamScore", "eventTeamScore", "a");
+	register_event( "TeamScore", "eventTeamScore", "a" );
 	cvar_swapAtRound = register_cvar( "amx_halftime_at_round", "16" ); // The swap will occur on the start of the round number specified here. Ex. set to 16 for a 30 round game.
-	cvar_announceSwap = register_cvar("amx_announce_swap", "1"); // Enable or disable last round of half message.
+	cvar_announceSwap = register_cvar( "amx_announce_swap", "1" ); // Enable or disable last round of half message.
 }
 
 public plugin_precache()
@@ -55,17 +55,17 @@ public roundEnd()
 		{
 			addDelay( players[i] );
 		}
-		set_task( 4.5, "swapTeamScore", roundNumber);
+		set_task( 4.5, "swapTeamScore", roundNumber );
 	}
 	if( get_pcvar_num( cvar_announceSwap ) == 1 && roundNumber == get_pcvar_num( cvar_swapAtRound ) - 1 )
 	{
-		set_task( 5.0, "announceSwap", roundNumber); // Wait 5 seconds until the next round starts to send the annoucement.
+		set_task( 5.0, "announceSwap", roundNumber ); // Wait 5 seconds until the next round starts to send the annoucement.
 	}
 }
 
 public announceSwap()
 {
-	client_print(0, print_chat, "[AMX Mod X Halftime]: Last round in the half.");
+	client_print(0, print_chat, "[AMX Mod X Halftime]: Last round of the half.");
 }
 
 public addDelay( id ) // Prevent server crash with lots of clients.
